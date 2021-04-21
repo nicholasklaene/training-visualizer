@@ -27,6 +27,7 @@ exports.handler = async (event) => {
     data = await data.json();
 
     const accessToken = data.access_token;
+    console.log(accessToken);
 
     // store in secrets manager
     const params = {
@@ -34,13 +35,7 @@ exports.handler = async (event) => {
         SecretString: JSON.stringify(accessToken)
     };
 
-    client.updateSecret(params, (err, data) => {
-        if (err) {
-            console.log(err, err.stack);
-        } else {
-            console.log(data);
-        }
-    });
+    await client.updateSecret(params).promise();
 
     const response = {
         statusCode: 204

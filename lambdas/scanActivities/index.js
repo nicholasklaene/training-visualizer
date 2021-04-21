@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const SecretsManager = require("aws-sdk/clients/secretsmanager");
+const DynamoDB = require("aws-sdk/clients/dynamodb");
 const client = new SecretsManager({ region: "us-east-2" });
 
 exports.handler = async (event) => {
