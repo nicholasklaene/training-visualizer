@@ -27,7 +27,6 @@ exports.handler = async (event) => {
     data = await data.json();
 
     const accessToken = data.access_token;
-    console.log(accessToken);
 
     // store in secrets manager
     const params = {
