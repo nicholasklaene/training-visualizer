@@ -23,10 +23,11 @@ export default {
   },
   methods: {
     setupLeafletMap: async function () {
-
       const mapDiv = L.map(`${this.id}`).setView(this.center, 14);
 
-      let accessToken = await fetch("https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/key");
+      let accessToken = await fetch(
+        "https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/key"
+      );
       accessToken = await accessToken.json();
       accessToken = accessToken.key;
 
@@ -35,20 +36,14 @@ export default {
         {
           maxZoom: 20,
           id: "mapbox/streets-v11",
-          accessToken: accessToken
+          accessToken: accessToken,
         }
       ).addTo(mapDiv);
 
-    
-      L.polyline (
-          this.coordinates,
-          {
-              color: "red",
-              weight: 3
-          }
-      ).addTo(mapDiv)
-
-
+      L.polyline(this.coordinates, {
+        color: "#fc5200",
+        weight: 3,
+      }).addTo(mapDiv);
     },
   },
   mounted() {
@@ -58,8 +53,12 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+}
+
 .map {
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  height: 300px;
 }
 </style>

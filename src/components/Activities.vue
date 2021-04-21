@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="activities">
         <Activity
             v-for="activity in activities"
             :key="activity.id"
@@ -50,6 +50,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-
+  .activities {
+    display: grid;
+    width: 20%;
+    margin: 0 auto;
+  }
 
 </style>
