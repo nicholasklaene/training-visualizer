@@ -1,15 +1,12 @@
+const fetch = require("node-fetch");
+const SecretsManager = require("aws-sdk/clients/secretsmanager");
+const client = new SecretsManager({ region: "us-east-2" });
+
 exports.handler = async (event) => {
 
-    const fetch = require("node-fetch");
-    const SecretsManager = require("aws-sdk/clients/secretsmanager");
-
-    const client = new SecretsManager({
-        region: "us-east-2"
-    });
-
-    let refreshToken = process.env.REFRESH_TOKEN;
-    let clientSecret = process.env.CLIENT_SECRET;
-    let clientId = process.env.CLIENT_ID;
+    const refreshToken = process.env.REFRESH_TOKEN;
+    const clientSecret = process.env.CLIENT_SECRET;
+    const clientId = process.env.CLIENT_ID;
 
     const url = "https://www.strava.com/oauth/token";
 
