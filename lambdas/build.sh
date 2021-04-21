@@ -19,4 +19,10 @@ zip -r ../getActivities.zip *
 cd ..
 aws lambda update-function-code --function-name getActivities --zip-file fileb://getActivities.zip
 
-echo "build complete"
+# get map box key
+cd getMapBoxKey/
+zip -r ../getMapBoxKey.zip *
+cd ..
+aws lambda update-function-code --function-name getMapBoxKey --zip-file fileb://getMapBoxKey.zip
+
+echo "Build complete!"

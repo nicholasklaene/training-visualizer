@@ -38,7 +38,7 @@ exports.handler = async (event) => {
         let result = await dynamodb.get(params).promise() 
 
         if (result.Item === null || result.Item === undefined) {
-
+            let activityDate = (new Date(activity.start_date_local)).valueOf()
             let item = {
                 activity_id: activity.id,
                 type: activity.type,
@@ -47,11 +47,10 @@ exports.handler = async (event) => {
                 moving_time: activity.moving_time,
                 polyline: activity.map.summary_polyline,
                 elapsed_time: activity.elapsed_time,
-                date: activity.start_date_local,
+                date: activityDate,
                 elevation_gain: activity.total_elevation_gain,
                 start_latitude: activity.start_latitude,
                 start_longitude: activity.start_longitude
-
             }
 
             let current = {

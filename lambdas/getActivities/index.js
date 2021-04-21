@@ -39,7 +39,11 @@ exports.handler = async (event) => {
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(data.Items) // add json stringify
+        headers: {
+            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data.Items)
     };
 
     return response;

@@ -4,10 +4,17 @@
         <Activity
             v-for="activity in activities"
             :key="activity.id"
-            v-bind:id="activity.id"
+            v-bind:id="activity.activity_id"
             v-bind:name="activity.name"
             v-bind:distance="activity.distance"
-            v-bind:pace="activity.pace"
+            v-bind:date="activity.date"
+            v-bind:elapsedTime="activity.elapsed_time"
+            v-bind:movingTime="activity.moving_time"
+            v-bind:polyline="activity.polyline"
+            v-bind:type="activity.type"
+            v-bind:elevationGain="activity.elevation_gain"
+            v-bind:startLatitude="activity.start_latitude"
+            v-bind:startLongitude="activity.start_longitude"
         />
     </div>
 
@@ -32,9 +39,8 @@ export default {
   },
   methods: {
     async getActivities() {
-        let data = await fetch("https://607f1fe402a23c0017e8ccae.mockapi.io/activities");
+        let data = await fetch("https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/activities?page=1");
         data = await data.json();
-        data.forEach(activity => activity.id = parseInt(activity.id)) // mock api sending back string
         this.activities = data;
     }
   }
