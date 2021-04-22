@@ -45,6 +45,7 @@
         This activity was entered manually.
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -156,9 +157,11 @@ export default {
   border-radius: 0% 1rem 1rem 1rem;
   box-shadow: 0px 8px 24px rgb(13 13 18 / 4%);
   background: #fff;
+  width: 100%;
 }
 
 .activity {
+  width: 92%;
   padding: 0 2.8rem;
   margin: 0.5rem 0;
   display: flex;
@@ -199,8 +202,8 @@ export default {
 }
 
 .attachment {
-  width: 36px;
-  height: 42px;
+  width: 8%;
+  height: 50px;
   background-color: #fc5200;
   border-radius: 30% 0% 0% 30%;
   opacity: 60%;
@@ -210,7 +213,7 @@ export default {
   color: #fff;
   font-size: 1.4rem;
   width: 100%;
-  padding-top: 30%;
+  padding-top: 40%;
   text-align: center;
 }
 

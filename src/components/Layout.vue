@@ -1,19 +1,16 @@
 <template>
   <div class="layout">
-      <Header />
       <Activities />
   </div>
 </template>
 
 <script>
 import Activities from "./Activities";
-import Header from "./Header";
 
 export default {
   name: "Layout",
   components: {
     Activities,
-    Header,
   }
 };
 </script>
@@ -30,7 +27,7 @@ body {
 }
 
 .layout {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 

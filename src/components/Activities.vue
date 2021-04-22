@@ -78,7 +78,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
-  width: 35%;
+  width: 30%;
   margin: 0 auto;
 }
 </style>
