@@ -59,6 +59,6 @@ export default {
 
 .map {
   width: 100%;
-  height: 240px;
+  height: 280px;
 }
 </style>

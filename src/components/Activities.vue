@@ -30,7 +30,7 @@ export default {
     return {
       activities: [],
       page: 1,
-      lastPage: 3
+      lastPage: 16 // Days since january 1, 2021
     };
   },
   computed: {
@@ -66,7 +66,6 @@ export default {
     handleScrolledToBottom(isVisible) {
       if (!isVisible ) { return }
       if(this.page >= this.lastPage) { return }
-      console.log('abc')
       this.page++
       this.getActivities()
     }
@@ -77,9 +76,9 @@ export default {
 <style scoped>
 .activities {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 2rem;
-  width: 50%;
+  width: 35%;
   margin: 0 auto;
 }
 </style>
