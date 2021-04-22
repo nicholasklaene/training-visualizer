@@ -72,16 +72,15 @@ export default {
       let minutes = seconds / 60;
       let minutesPerMile = minutes / this.distanceInMiles();
       minutes = Math.floor(minutesPerMile);
-      let leftOverSeconds =
-        (Number.parseFloat(minutesPerMile.toString().split(".")[1]) * 6) / 10;
-      return `${minutes.toFixed(0)}:${leftOverSeconds
-        .toString()
-        .substring(0, 2)} / mi`;
+
+      let leftOverSeconds = (Number.parseFloat(minutesPerMile.toString().split(".")[1]) * 0.6).toString().substring(0, 2);
+      let remainder = Number.parseInt(leftOverSeconds.charAt(0)) > 5 ? `0${leftOverSeconds % 10}` : `${leftOverSeconds}`;
+      
+      return `${minutes.toFixed(0)}:${remainder} / mi`;
     },
 
     timeOfDay() {
       let day = new Date(this.date);
-
       return `${day.getMonth() + 1}/${day.getDate()}/${
         day.getFullYear() % 100
       }`;
