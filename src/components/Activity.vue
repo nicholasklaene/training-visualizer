@@ -1,5 +1,6 @@
 <template>
   <div class="activity">
+
     <div class="activity-title">
       {{ name }}<span class="date">{{ timeOfDay() }}</span>
     </div>
@@ -20,17 +21,16 @@
     </div>
 
     <Map
-      v-bind:coordinates="coordinates"
-      v-bind:id="id"
-      v-bind:startLatitude="startLatitude"
-      v-bind:startLongitude="startLongitude"
+      v-bind:coordinates="this.coordinates"
+      v-bind:id="this.id"
+      v-bind:startLatitude="this.startLatitude"
+      v-bind:startLongitude="this.startLongitude"
     />
   </div>
 </template>
 
 <script>
 import Map from "./Map";
-import { globalStore } from "../main.js";
 
 export default {
   name: "Activity",
@@ -64,10 +64,6 @@ export default {
     metersToFeet() {
       return Math.round(this.elevationGain * 3.281);
     },
-    page() {
-      return globalStore.page;
-    },
-
     secondsToMinutesPerMile(seconds) {
       let minutes = seconds / 60;
       let minutesPerMile = minutes / this.distanceInMiles();
@@ -81,7 +77,33 @@ export default {
 
     timeOfDay() {
       let day = new Date(this.date);
-      return `${day.getMonth() + 1}/${day.getDate()}/${
+
+      let dayOfWeek = "";
+      switch(day.getDay()) {
+        case 0:
+          dayOfWeek = "Sunday"
+          break
+        case 1:
+          dayOfWeek = "Monday"
+          break
+        case 2:
+          dayOfWeek = "Tuesday"
+          break
+        case 3:
+          dayOfWeek = "Wednesday"
+          break
+        case 4:
+          dayOfWeek = "Thursday"
+          break
+        case 5:
+          dayOfWeek = "Friday"
+          break
+        case 6:
+          dayOfWeek = "Saturday"
+          break
+      }
+
+      return `${dayOfWeek} ${day.getMonth() + 1}/${day.getDate()}/${
         day.getFullYear() % 100
       }`;
     },
@@ -89,7 +111,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .activity {
   padding: 1rem;
@@ -101,7 +122,7 @@ export default {
 
 .activity-title {
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   display: flex;
   margin-bottom: 1rem;
 }
@@ -118,6 +139,7 @@ export default {
 
 .date {
   font-weight: initial;
+  font-size: 1.1rem;
   margin-left: auto;
 }
 

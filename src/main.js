@@ -1,14 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
+import VueObserveVisibility from 'vue-observe-visibility'
 
-// Don't want to implement full on state management so this will have to do
-export const globalStore = new Vue({
-  data: {
-    page: 1
-  }
-})
+Vue.use(VueObserveVisibility)
+
+Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),

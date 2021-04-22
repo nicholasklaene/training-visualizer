@@ -5,13 +5,11 @@
 </template>
 
 <script>
-import { globalStore } from "../main.js";
-
 export default {
   name: "Header",
   methods: {
     dateRange() {
-      let page = globalStore.page;
+      let page = 1;
       let startDate = new Date();
       let endDate = new Date();
       startDate = startDate.setDate(startDate.getDate() - 7 * page).valueOf(); // 7 * page days ago
@@ -24,12 +22,7 @@ export default {
         endDate.getMonth() + 1
       }/${endDate.getDate()}`;
     },
-  },
-  computed: {
-    page() {
-      return globalStore.page;
-    },
-  },
+  }
 };
 </script>
 
