@@ -30,7 +30,7 @@ export default {
     return {
       activities: [],
       page: 1,
-      lastPage: 16 // Days since january 1, 2021
+      lastPage: Math.round((new Date() - new Date(2021, 0, 1)) / (7 * 24 * 60 * 60 * 1000)) // Days since january 1, 2021
     };
   },
   computed: {
@@ -61,7 +61,6 @@ export default {
       );
       data = await data.json();
       this.activities.push(...data)
-      // Set last page to # sent back by api
     },
     handleScrolledToBottom(isVisible) {
       if (!isVisible ) { return }
