@@ -11,8 +11,10 @@
         <span class="big-below"> {{ distanceInMiles().toFixed(2) }} </span>
       </div>
       <div class="activity-pace">
-        <span class="small-above">Pace: </span>
-        <span class="big-below">{{ secondsToMinutesPerMile(movingTime) }}</span>
+        <span class="small-above" v-if="this.type=='Run'">Pace: </span>
+        <span class="big-below" v-if="this.type=='Run'">{{ secondsToMinutesPerMile(movingTime) }}</span>
+        <span class="small-above" v-if="this.type=='Ride' || this.type=='VirtualRide'">Speed: </span>
+        <span class="big-below" v-if="this.type=='Ride' || this.type=='VirtualRide'"> {{mph(movingTime)}} </span>
       </div>
       <div class="activity-elevation-gain">
         <span class="small-above">Elevation Gain:</span>
@@ -74,7 +76,14 @@ export default {
       
       return `${minutes.toFixed(0)}:${remainder} / mi`;
     },
+    mph(seconds) {
 
+      let minutes = seconds / 60;
+      let hours = minutes / 60;
+      let totalDistance = this.distanceInMiles()
+
+      return (totalDistance / hours).toFixed(1) + " mph";
+    },
     timeOfDay() {
       let day = new Date(this.date);
 
