@@ -29,7 +29,7 @@ export default {
     return {
       activities: [],
       page: 1,
-      lastPage: 16,
+      lastPage: Math.round((new Date() - new Date(2021, 0, 1)) / (7 * 24 * 60 * 60 * 1000)),
     };
   },
   methods: {
