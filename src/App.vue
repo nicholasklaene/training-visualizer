@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <div class="left">
-        <Profile />
+        <Profile :activities="activities"/>
       </div>
       <div class="center">
         <Activities :activities="activities" />
@@ -37,11 +37,13 @@ export default {
       const response = await fetch(
         `https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/activities?page=${this.page}`
       );
-      const data = await response.json();
+      let data = await response.json();
+      // Filters out manually entered indoor activities
+      data = data.filter((activity) => activity.distance > 0);
       this.activities.push(...data);
     },
     handleScrolledToBottom(isVisible) {
-      if (!isVisible) {
+      if (!isVisible || this.page >= this.lastPage) {
         return;
       }
 
@@ -89,6 +91,7 @@ body {
 }
 
 .center {
+  margin: 4rem 0;
   grid-column-start: 2;
   grid-column-end: 4;
 }

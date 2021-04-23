@@ -1,7 +1,7 @@
 <template>
   <div class="activities">
     <div :key="activity.activity_id" v-for="activity in activities">
-      <Activity :activity="activity" v-if="activity.distance > 0"/>
+      <Activity :activity="activity" v-if="activity.distance > 0" />
     </div>
   </div>
 </template>
