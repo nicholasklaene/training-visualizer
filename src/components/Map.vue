@@ -1,36 +1,31 @@
 <template>
-  <div id="container">
-    <div :id="id" class="map"></div>
-  </div>
+  <div :id="id" class="map"></div>
 </template>
 
 <script>
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import polyline from "@mapbox/polyline";
 
 export default {
   name: "Map",
   props: {
     id: Number,
-    coordinates: Array,
-    startLongitude: Number,
-    startLatitude: Number,
+    polyline: String,
   },
   data() {
     return {
-      center: [this.startLatitude, this.startLongitude],
+      coordinates: polyline.decode(this.polyline),
     };
   },
   methods: {
-    setupLeafletMap: async function () {
-      const mapDiv = L.map(`${this.id}`).setView(this.center, 14);
-
-      let accessToken = await fetch(
+    setupLeafletMap: async function() {
+        
+      const mapDiv = L.map(`${this.id}`).setView(this.coordinates[0], 14);
+      const response = await fetch(
         "https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/key"
       );
-      accessToken = await accessToken.json();
-      accessToken = accessToken.key;
-
+      const accessToken = (await response.json()).key;
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
@@ -53,10 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  width: 100%;
-}
-
 .map {
   width: 100%;
   height: 280px;
