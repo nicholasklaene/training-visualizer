@@ -1,4 +1,4 @@
-# training-visualizer
+# Training Visualizer
 
 ### About
 Training Visualizer is a tool to keep track of my runs & rides. 
