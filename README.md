@@ -1,7 +1,7 @@
 # Training Visualizer
 
 ### About
-Training Visualizer is a tool to keep track of my runs & rides. 
+Training Visualizer is a tool created to keep track of my runs & rides. 
 
 The project uses the Strava API to pull & store data to be displayed. For each run/ride, the application plots GPS data on an interactive map
 and provides details about the run.
