@@ -1,24 +1,15 @@
-# training-visualizer
+# Training Visualizer
 
-## Project setup
-```
-npm install
-```
+### About
+Training Visualizer is a tool created to keep track of my runs & rides. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+The project uses the Strava API to pull & store data to be displayed. For each run/ride, the application plots GPS data on an interactive map
+and provides details about the run.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Other Features
+The app allows for filtering between runs/rides, & provides details about my weekly training volume from week to week.
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Technologies
+Built with Vue.js & Node.js deployed on AWS with a serverless microservices architecture.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+AWS Services: API Gateway, Lambda, DynamoDB, S3, Secrets Manager, Event Bridge
