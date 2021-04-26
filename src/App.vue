@@ -40,6 +40,8 @@ export default {
       let data = await response.json();
       // Filters out manually entered indoor activities
       data = data.filter((activity) => activity.distance > 0);
+      // Sorts activities by date
+      data = data.sort((a, b) => a.date > b.date ? -1 : 1);
       this.activities.push(...data);
     },
     handleScrolledToBottom(isVisible) {
