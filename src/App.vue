@@ -1,9 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <div class="left">
-        <Profile :activities="activities"/>
-      </div>
       <div class="center">
         <Activities :activities="activities" />
       </div>
@@ -17,19 +14,19 @@
 
 <script>
 import Activities from "./components/Activities";
-import Profile from "./components/Profile";
 
 export default {
   name: "App",
   components: {
     Activities,
-    Profile,
   },
   data() {
     return {
       activities: [],
       page: 1,
-      lastPage: Math.round((new Date() - new Date(2021, 0, 1)) / (7 * 24 * 60 * 60 * 1000)),
+      lastPage: Math.round(
+        (new Date() - new Date(2021, 0, 1)) / (7 * 24 * 60 * 60 * 1000)
+      ),
     };
   },
   methods: {
@@ -41,7 +38,7 @@ export default {
       // Filters out manually entered indoor activities
       data = data.filter((activity) => activity.distance > 0);
       // Sorts activities by date
-      data = data.sort((a, b) => a.date > b.date ? -1 : 1);
+      data = data.sort((a, b) => (a.date > b.date ? -1 : 1));
       this.activities.push(...data);
     },
     handleScrolledToBottom(isVisible) {
@@ -86,10 +83,6 @@ body {
   grid-template-columns: repeat(4, 1fr);
   width: 60%;
   margin: 0 auto;
-}
-
-.left {
-  position: fixed;
 }
 
 .center {

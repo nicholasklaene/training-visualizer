@@ -19,8 +19,7 @@ export default {
     };
   },
   methods: {
-    setupLeafletMap: async function() {
-        
+    setupLeafletMap: async function () {
       const mapDiv = L.map(`${this.id}`).setView(this.coordinates[0], 14);
       const response = await fetch(
         "https://zh7kfl0l1a.execute-api.us-east-2.amazonaws.com/dev/key"
