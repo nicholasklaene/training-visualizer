@@ -13,3 +13,5 @@ The app allows for filtering between runs/rides, & provides details about my wee
 Built with Vue.js & Node.js deployed on AWS with a serverless microservices architecture.
 
 AWS Services: API Gateway, Lambda, DynamoDB, S3, Secrets Manager, Event Bridge
+
+![demo](https://user-images.githubusercontent.com/76413860/122641274-41c3e980-d0d2-11eb-9bb6-f775f1594ad8.png)
